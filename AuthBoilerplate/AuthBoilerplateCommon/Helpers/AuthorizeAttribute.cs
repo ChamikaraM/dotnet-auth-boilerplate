@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace AuthBoilerplateCommon.Helpers
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationFilterContext context)

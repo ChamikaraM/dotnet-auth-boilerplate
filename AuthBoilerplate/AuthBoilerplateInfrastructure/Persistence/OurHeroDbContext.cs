@@ -1,10 +1,16 @@
 ﻿using AuthBoilerplateDomain.Entities;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace AuthBoilerplateInfrastructure.Persistence
 {
     public class OurHeroDbContext : DbContext
     {
+        /* Migration commands
+        dotnet ef migrations add InitialCreate --context OurHeroDbContext --project AuthBoilerplateInfrastructure --startup-project AuthBoilerplate
+        dotnet ef database update --context OurHeroDbContext --project AuthBoilerplateInfrastructure --startup-project AuthBoilerplate
+        */
+
         public OurHeroDbContext(DbContextOptions<OurHeroDbContext> options) : base(options)
         {
 
