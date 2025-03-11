@@ -1,7 +1,7 @@
 ﻿using AuthBoilerplateApplication.DTOs;
 using AuthBoilerplateApplication.Interfaces;
+using AuthBoilerplateCommon.Helpers;
 using AuthBoilerplateDomain.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthBoilerplateWebApi.Controllers
