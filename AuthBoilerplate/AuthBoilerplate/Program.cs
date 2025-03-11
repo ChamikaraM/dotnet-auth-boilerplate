@@ -9,19 +9,19 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-string connectionString = builder.Configuration.GetConnectionString("OurHeroConnectionString");
+string connectionString = builder.Configuration.GetConnectionString("StudentConnectionString");
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
-builder.Services.AddDbContext<OurHeroDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Singleton);
+builder.Services.AddDbContext<StudentDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Singleton);
 
-builder.Services.AddSingleton<IOurHeroService, OurHeroService>();
+builder.Services.AddSingleton<IStudentService, StudentService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 
 
-//builder.Services.AddTransient<IOurHeroService, OurHeroService>();
-//builder.Services.AddScoped<IOurHeroService, OurHeroService>();
+//builder.Services.AddTransient<IStudentService, StudentService>();
+//builder.Services.AddScoped<IStudentService, StudentService>();
 
 builder.Services.AddSwaggerGen(swagger =>
 {

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthBoilerplateInfrastructure.Migrations
 {
-    [DbContext(typeof(OurHeroDbContext))]
-    [Migration("20250310235049_InitialCreate")]
+    [DbContext(typeof(StudentDbContext))]
+    [Migration("20250311183507_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AuthBoilerplateDomain.Entities.OurHero", b =>
+            modelBuilder.Entity("AuthBoilerplateDomain.Entities.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OurHeros");
+                    b.ToTable("Students");
 
                     b.HasData(
                         new

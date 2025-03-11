@@ -1,7 +1,7 @@
 ﻿
 namespace AuthBoilerplateDomain.Entities
 {
-    public class OurHero
+    public class Student
     {
         public int Id { get; set; }
         public required string FirstName { get; set; }

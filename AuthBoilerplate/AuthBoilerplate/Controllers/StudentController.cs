@@ -1,17 +1,17 @@
 ﻿using AuthBoilerplateApplication.DTOs;
 using AuthBoilerplateApplication.Interfaces;
-using Microsoft.AspNetCore.Authorization;
+using AuthBoilerplateCommon.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthBoilerplateWebApi.Controllers
 {
-    [Route("api/[controller]")] //    /api/OurHero
+    [Route("api/[controller]")] //    /api/Student
     [ApiController]
     [Authorize]
-    public class OurHeroController : ControllerBase
+    public class StudentController : ControllerBase
     {
-        private readonly IOurHeroService _heroService;
-        public OurHeroController(IOurHeroService heroService)
+        private readonly IStudentService _heroService;
+        public StudentController(IStudentService heroService)
         {
             _heroService = heroService;
         }
@@ -24,7 +24,7 @@ namespace AuthBoilerplateWebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        //[Route("{id}")] // /api/OurHero/:id
+        //[Route("{id}")] // /api/Student/:id
         public async Task<IActionResult> Get(int id)
         {
             var hero = await _heroService.GetHerosByID(id);
@@ -36,9 +36,9 @@ namespace AuthBoilerplateWebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] AddUpdateOurHero heroObject)
+        public async Task<IActionResult> Post([FromBody] AddUpdateStudent heroObject)
         {
-            var hero = await _heroService.AddOurHero(heroObject);
+            var hero = await _heroService.AddStudent(heroObject);
 
             if (hero == null)
             {
@@ -54,9 +54,9 @@ namespace AuthBoilerplateWebApi.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] AddUpdateOurHero heroObject)
+        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] AddUpdateStudent heroObject)
         {
-            var hero = await _heroService.UpdateOurHero(id, heroObject);
+            var hero = await _heroService.UpdateStudent(id, heroObject);
             if (hero == null)
             {
                 return NotFound();

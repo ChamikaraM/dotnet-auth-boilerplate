@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthBoilerplateInfrastructure.Migrations
 {
-    [DbContext(typeof(OurHeroDbContext))]
-    partial class OurHeroDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(StudentDbContext))]
+    partial class StudentDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AuthBoilerplateDomain.Entities.OurHero", b =>
+            modelBuilder.Entity("AuthBoilerplateDomain.Entities.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OurHeros");
+                    b.ToTable("Students");
 
                     b.HasData(
                         new

@@ -1,30 +1,29 @@
 ﻿using AuthBoilerplateDomain.Entities;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace AuthBoilerplateInfrastructure.Persistence
 {
-    public class OurHeroDbContext : DbContext
+    public class StudentDbContext : DbContext
     {
         /* Migration commands
-        dotnet ef migrations add InitialCreate --context OurHeroDbContext --project AuthBoilerplateInfrastructure --startup-project AuthBoilerplate
-        dotnet ef database update --context OurHeroDbContext --project AuthBoilerplateInfrastructure --startup-project AuthBoilerplate
+        dotnet ef migrations add InitialCreate --context StudentDbContext --project AuthBoilerplateInfrastructure --startup-project AuthBoilerplate
+        dotnet ef database update --context StudentDbContext --project AuthBoilerplateInfrastructure --startup-project AuthBoilerplate
         */
 
-        public OurHeroDbContext(DbContextOptions<OurHeroDbContext> options) : base(options)
+        public StudentDbContext(DbContextOptions<StudentDbContext> options) : base(options)
         {
 
         }
 
-        public DbSet<OurHero> OurHeros { get; set; }
+        public DbSet<Student> Students { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OurHero>().HasKey(x => x.Id);
+            modelBuilder.Entity<Student>().HasKey(x => x.Id);
 
-            modelBuilder.Entity<OurHero>().HasData(
-                new OurHero
+            modelBuilder.Entity<Student>().HasData(
+                new Student
                 {
                     Id = 1,
                     FirstName = "System",

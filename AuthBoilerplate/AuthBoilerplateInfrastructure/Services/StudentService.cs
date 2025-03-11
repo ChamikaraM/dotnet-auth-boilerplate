@@ -6,44 +6,44 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuthBoilerplateInfrastructure.Services
 {
-    public class OurHeroService : IOurHeroService
+    public class StudentService : IStudentService
     {
-        private readonly OurHeroDbContext _db;
-        public OurHeroService(OurHeroDbContext db)
+        private readonly StudentDbContext _db;
+        public StudentService(StudentDbContext db)
         {
             _db = db;
         }
-        public async Task<List<OurHero>> GetAllHeros(bool? isActive)
+        public async Task<List<Student>> GetAllHeros(bool? isActive)
         {
             if (isActive != null)
             {
-                return await _db.OurHeros.Where(m => m.isActive == isActive).ToListAsync();
+                return await _db.Students.Where(m => m.isActive == isActive).ToListAsync();
             }
-            return await _db.OurHeros.ToListAsync();
+            return await _db.Students.ToListAsync();
         }
 
-        public async Task<OurHero?> GetHerosByID(int id)
+        public async Task<Student?> GetHerosByID(int id)
         {
-            return await _db.OurHeros.FirstOrDefaultAsync(hero => hero.Id == id);
+            return await _db.Students.FirstOrDefaultAsync(hero => hero.Id == id);
         }
 
-        public async Task<OurHero?> AddOurHero(AddUpdateOurHero obj)
+        public async Task<Student?> AddStudent(AddUpdateStudent obj)
         {
-            var addHero = new OurHero()
+            var addHero = new Student()
             {
                 FirstName = obj.FirstName,
                 LastName = obj.LastName,
                 isActive = obj.isActive,
             };
 
-            _db.OurHeros.Add(addHero);
+            _db.Students.Add(addHero);
             var result = await _db.SaveChangesAsync();
             return result >= 0 ? addHero : null;
         }
 
-        public async Task<OurHero?> UpdateOurHero(int id, AddUpdateOurHero obj)
+        public async Task<Student?> UpdateStudent(int id, AddUpdateStudent obj)
         {
-            var hero = await _db.OurHeros.FirstOrDefaultAsync(index => index.Id == id);
+            var hero = await _db.Students.FirstOrDefaultAsync(index => index.Id == id);
             if (hero != null)
             {
                 hero.FirstName = obj.FirstName;
@@ -58,10 +58,10 @@ namespace AuthBoilerplateInfrastructure.Services
 
         public async Task<bool> DeleteHerosByID(int id)
         {
-            var hero = await _db.OurHeros.FirstOrDefaultAsync(index => index.Id == id);
+            var hero = await _db.Students.FirstOrDefaultAsync(index => index.Id == id);
             if (hero != null)
             {
-                _db.OurHeros.Remove(hero);
+                _db.Students.Remove(hero);
                 var result = await _db.SaveChangesAsync();
                 return result >= 0;
             }

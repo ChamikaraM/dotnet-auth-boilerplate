@@ -11,7 +11,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "OurHeros",
+                name: "Students",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OurHeros", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,7 +43,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "OurHeros",
+                table: "Students",
                 columns: new[] { "Id", "FirstName", "LastName", "isActive" },
                 values: new object[] { 1, "System", "", true });
 
@@ -57,7 +57,7 @@ namespace AuthBoilerplateInfrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OurHeros");
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "Users");

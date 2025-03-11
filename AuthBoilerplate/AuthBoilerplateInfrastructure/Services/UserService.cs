@@ -14,9 +14,9 @@ namespace AuthBoilerplateInfrastructure.Services
     public class UserService : IUserService
     {
         private readonly AppSettings _appSettings;
-        private readonly OurHeroDbContext db;
+        private readonly StudentDbContext db;
 
-        public UserService(IOptions<AppSettings> appSettings, OurHeroDbContext _db)
+        public UserService(IOptions<AppSettings> appSettings, StudentDbContext _db)
         {
             _appSettings = appSettings.Value;
             db = _db;
@@ -80,7 +80,7 @@ namespace AuthBoilerplateInfrastructure.Services
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
-                    Expires = DateTime.UtcNow.AddDays(7),
+                    Expires = DateTime.UtcNow.AddHours(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
                 };
                 return tokenHandler.CreateToken(tokenDescriptor);

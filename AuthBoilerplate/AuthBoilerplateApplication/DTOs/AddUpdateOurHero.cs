@@ -1,6 +1,6 @@
 ﻿namespace AuthBoilerplateApplication.DTOs
 {
-    public class AddUpdateOurHero
+    public class AddUpdateStudent
     {
         public required string FirstName { get; set; }
         public string LastName { get; set; } = string.Empty;
